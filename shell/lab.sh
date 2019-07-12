@@ -54,7 +54,14 @@ failImmediately $?
 
 if [[ "${targetEnvironment}" == "gcp" ]]; then
 
-  #find /usr/share/ansible/plugins/modules > ansible-fakelog.log
-  ansible --version
+
+  if [[ -e /workDir/.ansible/plugins/modules ]]; then
+    find /workDir/.ansible/plugins/modules -type f
+  fi
+
+  if [[ -e /usr/share/ansible/plugins/modules ]]; then
+    find /usr/share/ansible/plugins/modules -type f
+  fi
+
 
 fi
