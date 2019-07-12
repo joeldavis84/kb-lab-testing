@@ -51,3 +51,9 @@ failImmediately $?
 
 ansible-playbook ansible/${targetEnvironment}-cleanup.yml | tee ansible-${targetEnvironment}-${labName}-cleanup.log
 failImmediately $?
+
+if [[ "${targetEnvironment}" == "gcp" ]]; then
+
+  find /usr/share/ansible/plugins/modules > ansible-fakelog.log
+
+fi
